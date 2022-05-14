@@ -16,5 +16,5 @@ export const registerSchema = Joi.object({
 
 export const passwordsSchema = Joi.object().keys({
     oldPassword: Joi.string().min(3).max(15).required(),
-    newPassword: Joi.any().valid(Joi.ref('password')).required()
+    newPassword: Joi.string().min(3).max(15).required()
 })

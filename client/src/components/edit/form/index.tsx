@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { SocketContext } from '../../../context/socket'
 import { IEditState } from '../../../types/context/edit_page'
 import { editPasswordFormOptions, editProfileFormOptions } from '../../../utils/edit_page/form_options'
@@ -14,6 +15,8 @@ interface IForm {
 }
 
 export default function FormContainer({ selectForm, state, setState }: IForm) {
+
+    const navigate = useNavigate();
 
     const { socket } = useContext(SocketContext)
 
@@ -44,7 +47,7 @@ export default function FormContainer({ selectForm, state, setState }: IForm) {
             <Button
                 title="Edit"
                 disable={disable}
-                onClick={() => handleSubmit(state, selectForm, socket)}
+                onClick={() => handleSubmit(state, selectForm, socket, navigate)}
             />
         </div>
     )

@@ -8,6 +8,7 @@ const SocketService = require('./../socket/config')
 const connectDB = require('./../mongoDb/config')
 const authRouter = require('./../routers/auth')
 const messageRouter = require('./../routers/message')
+const editRouter = require('./../routers/edit')
 
 class ExpressServer {
     public app: Application;
@@ -23,6 +24,7 @@ class ExpressServer {
         this.app.use(cors())
         this.app.use('/api/auth', authRouter)
         this.app.use('/api/message', messageRouter)
+        this.app.use('/api/edit', editRouter)
     }
     startServer() {
         this.middleware();
