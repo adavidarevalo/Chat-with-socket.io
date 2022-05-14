@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react'
+import { AuthContext } from '../../../context/auth'
 import { ChatContext } from '../../../context/chat'
 import { IUser } from '../../../types/user'
 import ModalMenu from './modal_menu'
@@ -6,6 +7,7 @@ import User from './user'
 
 export default function Users() {
     const { users } = useContext(ChatContext)
+    const { uid: authId } = useContext(AuthContext)
 
     const [search, setSearch] = useState<string>('')
 
@@ -41,7 +43,7 @@ export default function Users() {
                 </div>
                 <li>
                     {
-                        users?.length > 0 && users.filter((x: IUser) => x.username.toLowerCase().includes(search.toLowerCase())).map((user: IUser) => (
+                        users?.length > 0 && users.filter((x: IUser) => x.username.toLowerCase().includes(search.toLowerCase())).map((user: IUser) => user.uid !== authId && (
                             <User key={user.uid} user={user} />
                         ))
                     }

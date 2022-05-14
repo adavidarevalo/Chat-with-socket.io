@@ -45,6 +45,8 @@ const authNew = async (req: Request, res: Response) => {
 
         newUser.password = await hashPassword(newUser.password)
 
+        newUser.online = true;
+
         const result = await newUser.save()
 
         const token = createJWT(result._id)

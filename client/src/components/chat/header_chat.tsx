@@ -7,7 +7,6 @@ import defaultUser from './../../../public/assets/default-user.png'
 export default function HeaderChat() {
     const { activeChat, users } = useContext(ChatContext)
 
-
     const user = users.find((x: IUser) => x.uid === activeChat)
 
     const { username, online } = user

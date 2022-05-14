@@ -13,10 +13,6 @@ export default function Messages() {
     const { messages: messagesList } = useContext(ChatContext)
     const { uid } = useContext(AuthContext)
 
-    // useEffect(() => {
-    //     scrollToBottom('messages')
-    // }, [])
-
     return (
         <div className="relative w-full p-6 overflow-y-auto h-[44rem]">
             <ul

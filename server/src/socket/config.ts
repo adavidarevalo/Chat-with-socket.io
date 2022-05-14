@@ -29,7 +29,7 @@ class SocketService {
             socket.on('personal-message', async (payload: any) => {
                 const newMessage = await createPersonalMessage(payload)
 
-                this.io.to(payload.from).emit('personal-message', newMessage)
+                this.io.to(id).emit('personal-message', newMessage)
                 this.io.to(payload.to).emit('personal-message', newMessage)
             })
 

@@ -20,9 +20,7 @@ const userDisconnect = async (id: string) => {
 const getUsers = async (id: string) => {
     const users = await User.find().sort('-online')
 
-    const deleteUserId = users.filter((user: any) => user._id != id)
-
-    return deleteUserId
+    return users
 }
 
 const editUser = async (id: string, avatar: string, payload: any) => {
